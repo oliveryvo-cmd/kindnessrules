@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>KindnessRules — Join the Movement</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--yellow:#ffdd00;--pink:#ff44aa;--blue:#44aaff;--green:#44ffaa;--purple:#cc44ff;}
+body{background:#0a0510;color:#fff;font-family:'Courier New',monospace;overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 24px;background:rgba(10,5,16,0.9);border-bottom:1px solid #ffffff11;backdrop-filter:blur(10px);}
+.nav-logo{font-size:1rem;font-weight:900;letter-spacing:4px;background:linear-gradient(90deg,var(--yellow),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-join{padding:8px 24px;background:linear-gradient(135deg,var(--yellow),var(--pink));border:none;color:#000;font-size:0.6rem;font-weight:900;letter-spacing:3px;cursor:pointer;border-radius:50px;font-family:'Courier New',monospace;transition:all 0.2s;}
+.nav-join:hover{transform:scale(1.05);}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 20px 60px;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,#200040 0%,#0a0510 65%);z-index:0;}
+.hearts{position:absolute;inset:0;pointer-events:none;z-index:0;}
+.hero-content{position:relative;z-index:1;}
+.hero-emoji{font-size:5rem;margin-bottom:20px;animation:bounce 2s ease-in-out infinite;}
+@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+.hero-title{font-size:clamp(2.5rem,12vw,8rem);font-weight:900;letter-spacing:8px;line-height:0.95;margin-bottom:20px;}
+.hero-title .k{background:linear-gradient(135deg,var(--yellow),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;}
+.hero-title .r{background:linear-gradient(135deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;}
+.hero-sub{font-size:clamp(0.7rem,2.5vw,1.1rem);letter-spacing:4px;color:#aaaacc;margin-bottom:12px;max-width:550px;}
+.hero-rule{font-size:clamp(0.6rem,2vw,0.9rem);letter-spacing:3px;color:var(--yellow);margin-bottom:48px;padding:12px 28px;border:1px solid rgba(255,220,0,0.3);border-radius:50px;display:inline-block;}
+.join-big{padding:18px 60px;background:linear-gradient(135deg,var(--yellow),var(--pink));border:none;color:#000;font-size:1rem;font-weight:900;letter-spacing:6px;cursor:pointer;border-radius:50px;box-shadow:0 0 40px #ffdd0044;transition:all 0.2s;font-family:'Courier New',monospace;}
+.join-big:hover{transform:scale(1.07);box-shadow:0 0 60px #ffdd0088;}
+
+/* COUNTER */
+#counter-section{padding:60px 20px;text-align:center;position:relative;z-index:1;}
+.counter-box{display:inline-block;background:rgba(255,220,0,0.05);border:1px solid rgba(255,220,0,0.2);border-radius:20px;padding:32px 60px;}
+.counter-num{font-size:clamp(3rem,10vw,6rem);font-weight:900;background:linear-gradient(135deg,var(--yellow),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
+.counter-label{font-size:0.6rem;letter-spacing:6px;color:#888866;margin-top:8px;}
+
+/* THE RULE */
+#rule-section{padding:80px 20px;text-align:center;}
+.rule-box{max-width:600px;margin:0 auto;background:rgba(255,255,255,0.02);border:2px solid rgba(255,220,0,0.2);border-radius:24px;padding:48px 32px;}
+.rule-title{font-size:clamp(1rem,4vw,1.8rem);font-weight:900;letter-spacing:6px;color:var(--yellow);margin-bottom:32px;}
+.rule-item{display:flex;align-items:flex-start;gap:16px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.05);text-align:left;}
+.rule-item:last-child{border-bottom:none;}
+.rule-icon{font-size:1.8rem;min-width:40px;}
+.rule-text h3{font-size:0.75rem;letter-spacing:4px;color:#fff;margin-bottom:4px;}
+.rule-text p{font-size:0.55rem;letter-spacing:2px;color:#888899;line-height:2;}
+
+/* MEMBERS */
+#members-section{padding:80px 20px;text-align:center;}
+.section-title{font-size:clamp(1rem,4vw,1.8rem);font-weight:900;letter-spacing:6px;margin-bottom:8px;}
+.section-sub{font-size:0.55rem;letter-spacing:4px;color:#555577;margin-bottom:40px;}
+.members-grid{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:800px;margin:0 auto;}
+.member-chip{padding:8px 20px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:50px;font-size:0.55rem;letter-spacing:3px;color:#aaaacc;transition:all 0.2s;}
+.member-chip.new{border-color:var(--yellow);color:var(--yellow);background:rgba(255,220,0,0.06);}
+
+/* JOIN FORM */
+#join-section{padding:80px 20px;text-align:center;}
+.join-box{max-width:520px;margin:0 auto;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);border-radius:24px;padding:48px 32px;}
+.join-title{font-size:clamp(1.2rem,5vw,2rem);font-weight:900;letter-spacing:6px;margin-bottom:8px;background:linear-gradient(135deg,var(--yellow),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.join-sub{font-size:0.55rem;letter-spacing:3px;color:#666688;margin-bottom:32px;line-height:2;}
+.form-input{width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:14px 18px;color:#fff;font-size:0.75rem;letter-spacing:1px;font-family:'Courier New',monospace;outline:none;margin-bottom:12px;transition:border 0.2s;}
+.form-input:focus{border-color:var(--yellow);}
+.pledge-box{background:rgba(255,220,0,0.04);border:1px solid rgba(255,220,0,0.2);border-radius:12px;padding:20px;margin-bottom:20px;text-align:left;}
+.pledge-title{font-size:0.55rem;letter-spacing:4px;color:var(--yellow);margin-bottom:12px;}
+.pledge-text{font-size:0.6rem;letter-spacing:1px;color:#ccccaa;line-height:2.2;}
+.pledge-check{display:flex;align-items:center;gap:10px;margin-top:12px;cursor:pointer;}
+.pledge-check input{width:18px;height:18px;accent-color:var(--yellow);}
+.pledge-check span{font-size:0.55rem;letter-spacing:2px;color:#aaaacc;}
+.join-btn{width:100%;padding:16px;background:linear-gradient(135deg,var(--yellow),var(--pink));border:none;color:#000;font-size:0.85rem;font-weight:900;letter-spacing:5px;cursor:pointer;border-radius:50px;font-family:'Courier New',monospace;transition:all 0.2s;margin-top:8px;}
+.join-btn:hover{transform:scale(1.02);box-shadow:0 0 40px #ffdd0066;}
+.join-confirm{display:none;margin-top:20px;padding:20px;background:rgba(68,255,170,0.06);border:1px solid rgba(68,255,170,0.2);border-radius:12px;}
+.join-confirm-emoji{font-size:3rem;margin-bottom:8px;}
+.join-confirm-text{font-size:0.7rem;letter-spacing:3px;color:var(--green);line-height:2;}
+.join-confirm-num{font-size:1.5rem;font-weight:900;color:var(--yellow);margin-top:8px;}
+
+/* SPREAD */
+#spread-section{padding:80px 20px;text-align:center;border-top:1px solid #ffffff08;}
+.spread-title{font-size:clamp(1rem,4vw,1.6rem);font-weight:900;letter-spacing:6px;margin-bottom:40px;}
+.spread-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;max-width:700px;margin:0 auto;}
+.spread-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:24px;transition:all 0.2s;cursor:pointer;}
+.spread-card:hover{border-color:var(--yellow);transform:translateY(-3px);}
+.spread-icon{font-size:2rem;margin-bottom:10px;}
+.spread-name{font-size:0.65rem;letter-spacing:4px;color:#fff;margin-bottom:6px;}
+.spread-desc{font-size:0.5rem;letter-spacing:2px;color:#555577;line-height:1.8;}
+
+/* FOUNDER */
+#founder{padding:60px 20px;text-align:center;border-top:1px solid #ffffff08;}
+.founder-box{max-width:400px;margin:0 auto;background:rgba(255,220,0,0.03);border:1px solid rgba(255,220,0,0.1);border-radius:20px;padding:36px;}
+.founder-emoji{font-size:3rem;margin-bottom:12px;}
+.founder-name{font-size:1rem;font-weight:900;letter-spacing:5px;color:var(--yellow);margin-bottom:6px;}
+.founder-desc{font-size:0.55rem;letter-spacing:2px;color:#888866;line-height:2;}
+
+/* FOOTER */
+footer{padding:32px 20px;text-align:center;border-top:1px solid #ffffff08;}
+footer p{font-size:0.5rem;letter-spacing:3px;color:#333355;}
+
+/* FLOATING HEARTS */
+.heart{position:fixed;pointer-events:none;font-size:1.2rem;animation:floatUp linear infinite;opacity:0;}
+@keyframes floatUp{0%{transform:translateY(100vh) rotate(0deg);opacity:0;}10%{opacity:0.7;}90%{opacity:0.5;}100%{transform:translateY(-50px) rotate(20deg);opacity:0;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">💛 KINDNESS RULES</div>
+  <button class="nav-join" onclick="document.getElementById('join-section').scrollIntoView({behavior:'smooth'})">JOIN NOW</button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-emoji">💛</div>
+    <h1 class="hero-title">
+      <span class="k">KINDNESS</span>
+      <span class="r">RULES</span>
+    </h1>
+    <p class="hero-sub">A WORLDWIDE MOVEMENT OF KIDS WHO PROMISE TO BE KIND — TO EVERYONE.</p>
+    <div class="hero-rule">THE RULE: DON'T BE MEAN. TO ANYONE. EVER.</div>
+    <button class="join-big" onclick="document.getElementById('join-section').scrollIntoView({behavior:'smooth'})">💛 JOIN THE MOVEMENT</button>
+  </div>
+</section>
+
+<!-- COUNTER -->
+<section id="counter-section">
+  <div class="counter-box">
+    <div class="counter-num" id="counter">1</div>
+    <div class="counter-label">KIDS HAVE JOINED KINDNESS RULES</div>
+  </div>
+</section>
+
+<!-- THE RULES -->
+<section id="rule-section">
+  <div class="rule-box">
+    <div class="rule-title">THE 3 RULES</div>
+    <div class="rule-item">
+      <div class="rule-icon">🚫</div>
+      <div class="rule-text">
+        <h3>DON'T BE MEAN</h3>
+        <p>No bullying. No making fun of people. No leaving people out on purpose. If you join, you promise this.</p>
+      </div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-icon">♿</div>
+      <div class="rule-text">
+        <h3>STAND UP FOR DISABLED KIDS</h3>
+        <p>If you see someone being mean to a disabled kid, say something. Stand up. Be their hero.</p>
+      </div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-icon">📢</div>
+      <div class="rule-text">
+        <h3>SPREAD KINDNESS</h3>
+        <p>Tell your friends. Tell your school. The more kids who join, the more the world changes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEMBERS -->
+<section id="members-section">
+  <div class="section-title">💛 OUR MEMBERS</div>
+  <div class="section-sub">KIDS FROM ALL OVER THE WORLD</div>
+  <div class="members-grid" id="members-grid"></div>
+</section>
+
+<!-- JOIN -->
+<section id="join-section">
+  <div class="join-box">
+    <div class="join-title">JOIN THE MOVEMENT</div>
+    <div class="join-sub">It's free. It takes 30 seconds.<br>And it could change someone's life.</div>
+    <input class="form-input" id="j-name" type="text" placeholder="Your first name">
+    <input class="form-input" id="j-age" type="number" placeholder="Your age" min="5" max="18">
+    <input class="form-input" id="j-country" type="text" placeholder="Your country">
+    <div class="pledge-box">
+      <div class="pledge-title">✊ THE KINDNESS PLEDGE</div>
+      <div class="pledge-text">
+        "I promise to be kind to everyone.<br>
+        I will never bully or make fun of anyone.<br>
+        I will stand up for disabled kids.<br>
+        I will spread kindness every day."
+      </div>
+      <label class="pledge-check">
+        <input type="checkbox" id="j-pledge">
+        <span>I AGREE TO THE KINDNESS PLEDGE</span>
+      </label>
+    </div>
+    <button class="join-btn" onclick="joinMovement()">💛 I'M IN — JOIN NOW</button>
+    <div class="join-confirm" id="join-confirm">
+      <div class="join-confirm-emoji">💛</div>
+      <div class="join-confirm-text">WELCOME TO KINDNESS RULES!<br>YOU ARE MEMBER NUMBER</div>
+      <div class="join-confirm-num" id="member-number">#1</div>
+      <div style="font-size:0.5rem;letter-spacing:3px;color:#666644;margin-top:8px;">SHARE THIS WITH YOUR FRIENDS AND GROW THE MOVEMENT</div>
+    </div>
+  </div>
+</section>
+
+<!-- SPREAD -->
+<section id="spread-section">
+  <div class="spread-title">📢 SPREAD THE WORD</div>
+  <div class="spread-grid">
+    <div class="spread-card" onclick="shareText()">
+      <div class="spread-icon">📱</div>
+      <div class="spread-name">SHARE THE LINK</div>
+      <div class="spread-desc">Send kindnessrules to your friends and tell them to join</div>
+    </div>
+    <div class="spread-card">
+      <div class="spread-icon">🏫</div>
+      <div class="spread-name">TELL YOUR SCHOOL</div>
+      <div class="spread-desc">Ask your teacher to share KindnessRules with the whole class</div>
+    </div>
+    <div class="spread-card">
+      <div class="spread-icon">✊</div>
+      <div class="spread-name">MAKE THE PLEDGE</div>
+      <div class="spread-desc">Say the pledge out loud to your friends and challenge them to join</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section id="founder">
+  <div class="founder-box">
+    <div class="founder-emoji">👦</div>
+    <div class="founder-name">OLIVER VO</div>
+    <div class="founder-desc">FOUNDER OF KINDNESS RULES · AGE 10<br>ALSO BUILT: OVO CARES · STAND UP MOVIE · KIDSREBELLION GAMES<br><br>"I STARTED THIS BECAUSE BULLYING IS WRONG.<br>ESPECIALLY TO DISABLED KIDS."</div>
+  </div>
+</section>
+
+<footer>
+  <p>KINDNESS RULES · FOUNDED BY OLIVER VO · AGE 10 · FREE FOREVER · SPREAD KINDNESS</p>
+</footer>
+
+<script>
+// MEMBERS DATA
+const DEFAULT_MEMBERS = [
+  {name:'Oliver',age:10,country:'USA'},
+  {name:'Sofia',age:11,country:'Brazil'},
+  {name:'Amir',age:9,country:'Egypt'},
+  {name:'Priya',age:12,country:'India'},
+  {name:'Lucas',age:10,country:'France'},
+  {name:'Mei',age:11,country:'China'},
+  {name:'Emma',age:9,country:'Australia'},
+  {name:'Kai',age:10,country:'Japan'},
+  {name:'Lila',age:12,country:'UK'},
+  {name:'Diego',age:11,country:'Mexico'},
+  {name:'Zara',age:10,country:'Nigeria'},
+  {name:'Noah',age:9,country:'Canada'},
+];
+
+let members = [...DEFAULT_MEMBERS, ...JSON.parse(localStorage.getItem('kr_members')||'[]')];
+
+function renderMembers(){
+  const grid = document.getElementById('members-grid');
+  grid.innerHTML = members.map((m,i)=>`
+    <div class="member-chip ${i>=DEFAULT_MEMBERS.length?'new':''}">
+      💛 ${m.name}, ${m.age} · ${m.country}
+    </div>
+  `).join('');
+  document.getElementById('counter').textContent = members.length;
+}
+
+function joinMovement(){
+  const name = document.getElementById('j-name').value.trim();
+  const age = document.getElementById('j-age').value.trim();
+  const country = document.getElementById('j-country').value.trim();
+  const pledged = document.getElementById('j-pledge').checked;
+
+  if(!name||!age||!country){alert('Please fill in your name, age, and country!');return;}
+  if(!pledged){alert('You need to agree to the Kindness Pledge to join!');return;}
+
+  const newMember = {name,age:parseInt(age),country};
+  members.push(newMember);
+  const userMembers = JSON.parse(localStorage.getItem('kr_members')||'[]');
+  userMembers.push(newMember);
+  localStorage.setItem('kr_members',JSON.stringify(userMembers));
+
+  renderMembers();
+
+  document.getElementById('member-number').textContent = '#'+members.length;
+  document.getElementById('join-confirm').style.display='block';
+  document.getElementById('j-name').value='';
+  document.getElementById('j-age').value='';
+  document.getElementById('j-country').value='';
+  document.getElementById('j-pledge').checked=false;
+
+  // Scroll to confirm
+  document.getElementById('join-confirm').scrollIntoView({behavior:'smooth'});
+
+  // Heart burst
+  for(let i=0;i<10;i++) spawnHeart();
+}
+
+function shareText(){
+  const text = 'I just joined KindnessRules — a movement of kids who promise to never be mean. Join me! 💛';
+  if(navigator.share) navigator.share({title:'KindnessRules',text,url:window.location.href});
+  else {navigator.clipboard.writeText(text+' '+window.location.href); alert('Link copied! Share it with your friends 💛');}
+}
+
+// FLOATING HEARTS
+function spawnHeart(){
+  const h=document.createElement('div');
+  h.className='heart';
+  h.textContent=['💛','💙','💚','💜','❤️','🤍'][Math.floor(Math.random()*6)];
+  h.style.cssText=`left:${Math.random()*100}vw;bottom:0;animation-duration:${Math.random()*5+4}s;font-size:${Math.random()*1.5+0.8}rem;`;
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),(Math.random()*5+4)*1000);
+}
+setInterval(spawnHeart,1200);
+
+renderMembers();
+</script>
+</body>
+</html>
