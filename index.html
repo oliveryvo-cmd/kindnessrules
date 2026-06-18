@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>KindnessRules — Join the Movement</title>
+<title>KindOne — Join the Movement</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{--yellow:#ffdd00;--pink:#ff44aa;--blue:#44aaff;--green:#44ffaa;--purple:#cc44ff;}
@@ -103,7 +103,7 @@ footer p{font-size:0.5rem;letter-spacing:3px;color:#333355;}
 <body>
 
 <nav>
-  <div class="nav-logo">💛 KINDNESS RULES</div>
+  <div class="nav-logo">💛 KINDONE</div>
   <button class="nav-join" onclick="document.getElementById('join-section').scrollIntoView({behavior:'smooth'})">JOIN NOW</button>
 </nav>
 
@@ -126,7 +126,7 @@ footer p{font-size:0.5rem;letter-spacing:3px;color:#333355;}
 <section id="counter-section">
   <div class="counter-box">
     <div class="counter-num" id="counter">1</div>
-    <div class="counter-label">KIDS HAVE JOINED KINDNESS RULES</div>
+    <div class="counter-label">KIDS HAVE JOINED KINDONE</div>
   </div>
 </section>
 
@@ -189,7 +189,7 @@ footer p{font-size:0.5rem;letter-spacing:3px;color:#333355;}
     <button class="join-btn" onclick="joinMovement()">💛 I'M IN — JOIN NOW</button>
     <div class="join-confirm" id="join-confirm">
       <div class="join-confirm-emoji">💛</div>
-      <div class="join-confirm-text">WELCOME TO KINDNESS RULES!<br>YOU ARE MEMBER NUMBER</div>
+      <div class="join-confirm-text">WELCOME TO KINDONE!<br>YOU ARE MEMBER NUMBER</div>
       <div class="join-confirm-num" id="member-number">#1</div>
       <div style="font-size:0.5rem;letter-spacing:3px;color:#666644;margin-top:8px;">SHARE THIS WITH YOUR FRIENDS AND GROW THE MOVEMENT</div>
     </div>
@@ -203,12 +203,12 @@ footer p{font-size:0.5rem;letter-spacing:3px;color:#333355;}
     <div class="spread-card" onclick="shareText()">
       <div class="spread-icon">📱</div>
       <div class="spread-name">SHARE THE LINK</div>
-      <div class="spread-desc">Send kindnessrules to your friends and tell them to join</div>
+      <div class="spread-desc">Send kindone to your friends and tell them to join</div>
     </div>
     <div class="spread-card">
       <div class="spread-icon">🏫</div>
       <div class="spread-name">TELL YOUR SCHOOL</div>
-      <div class="spread-desc">Ask your teacher to share KindnessRules with the whole class</div>
+      <div class="spread-desc">Ask your teacher to share KindOne with the whole class</div>
     </div>
     <div class="spread-card">
       <div class="spread-icon">✊</div>
@@ -223,12 +223,12 @@ footer p{font-size:0.5rem;letter-spacing:3px;color:#333355;}
   <div class="founder-box">
     <div class="founder-emoji">👦</div>
     <div class="founder-name">OLIVER VO</div>
-    <div class="founder-desc">FOUNDER OF KINDNESS RULES · AGE 10<br>ALSO BUILT: OVO CARES · STAND UP MOVIE · KIDSREBELLION GAMES<br><br>"I STARTED THIS BECAUSE BULLYING IS WRONG.<br>ESPECIALLY TO DISABLED KIDS."<br><br><a href="https://oliveryvo-cmd.github.io/kindnessrules" style="color:var(--yellow);letter-spacing:3px;font-size:0.55rem;">🌐 OLIVERYVO-CMD.GITHUB.IO/KINDNESSRULES</a></div>
+    <div class="founder-desc">FOUNDER OF KINDONE · AGE 10<br>ALSO BUILT: OVO CARES · STAND UP MOVIE · KIDSREBELLION GAMES<br><br>"I STARTED THIS BECAUSE BULLYING IS WRONG.<br>ESPECIALLY TO DISABLED KIDS."<br><br><a href="https://oliveryvo-cmd.github.io/kindone" style="color:var(--yellow);letter-spacing:3px;font-size:0.55rem;">🌐 OLIVERYVO-CMD.GITHUB.IO/KINDNESSRULES</a></div>
   </div>
 </section>
 
 <footer>
-  <p>KINDNESS RULES · FOUNDED BY OLIVER VO · AGE 10 · FREE FOREVER · SPREAD KINDNESS</p>
+  <p>KINDONE · FOUNDED BY OLIVER VO · AGE 10 · FREE FOREVER · SPREAD KINDNESS</p>
 </footer>
 
 <script>
@@ -292,8 +292,8 @@ function joinMovement(){
 }
 
 function shareText(){
-  const text = 'I just joined KindnessRules — a movement of kids who promise to never be mean. Join me! 💛';
-  if(navigator.share) navigator.share({title:'KindnessRules',text,url:window.location.href});
+  const text = 'I just joined KindOne — a movement of kids who promise to never be mean. Join me! 💛';
+  if(navigator.share) navigator.share({title:'KindOne',text,url:window.location.href});
   else {navigator.clipboard.writeText(text+' '+window.location.href); alert('Link copied! Share it with your friends 💛');}
 }
 
